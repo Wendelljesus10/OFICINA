@@ -1,0 +1,86 @@
+use oficer;
+show tables;
+
+insert into Clients (CPF,Fname,Lname,Address,Numbers)
+values (41211915875,'Wendell','Rodrigues','Rua augusta 2677',14998509496),
+(41211915879,'Olivia','Rodrigues','Rua ancelmo 12',14998501234),
+(41211915800,'Guilherme','Torres','Rua santos dumond 33',11998501011),
+(11211915875,'Oilveira','Jesus','Avenida tibira 55',11915981011),
+(41221915875,'João','Ruam','Rua augusta 1',11998935526),
+(41213315875,'Tiago','Passo','Rua 3 rios',11998509496),
+(41211944875,'Eduarda','Rodrigues','Rua Santa izabel 112',12998509496),
+(41211915555,'Clermina','Santiago','Avenida bosque 22',13998509496),
+(41211915866,'Marcelo','Baptista','Rua Vila Lovos 8887',15998509496),
+(41211917775,'Celia','Maria','Rua Altair leite de campos 179',16998509496);
+
+select * from Clients;
+
+insert into Vehicle (Nameveh,Placa,Typecar,VClient_ID)
+values ('Corola 2013','FBR2A23','Carro',1),
+('Fusca 1962','TBR6N24','Carro',2),
+('CBR 1000','PRR9K26','Moto',3),
+('Volks Turbo','TTT1L77','Caminhão',4),
+('Nissan 350z','HHH8L17','Carro',5),
+('Clio','RRE2L59','Carro',6),
+('CB 150','QWE9P10','Moto',7),
+('Falcon','TCP3P33','Moto',8),
+('Master Mercedez','PRL2Y12','Caminhão',9),
+('Onix','PPP2P33','Carro',10);
+
+insert into Service(SDescription)
+values('Manutenção Motor'),
+('Limpeza de Interior'),
+('Troca de Peças'),
+('Vistoria');
+
+insert Parts_vehicle(Name)
+values ('Motor'),
+('Pneus'),
+('Chassis'),
+('Bancos'),
+('Painéis');
+
+insert into Mechanic(Speciality)
+values ('Manutenção'),
+('Montador'),
+('Auxiliar de Produção'),
+('Ajudante de Mecânico');
+
+insert into Team (TMechanic_id,TService_id)
+values (2,4),
+(3,2),
+(3,3),
+(4,4),
+(4,1);
+
+select * from Order_of_Service;
+insert into Order_of_Service(Date_issuance,Date_delivery,OrderValue,OrderStatus,OVehicle_id,OClient_id,OrderService_id,ODescription)
+values ('2023-09-10',null,500.00,'Finalizado',2,2,4,'Vistoria'),
+('2023-07-01','2023-08-01',600.00,'Finalizado',3,3,2,'Limpeza de Estofado'),
+('2023-07-01',null,999.00,default,2,2,3,'Troca de peças');
+insert into Order_of_Service(Date_issuance,Date_delivery,OrderValue,OrderStatus,OVehicle_id,OClient_id,OrderService_id,ODescription)
+values('2023-09-02','2023-09-05',500.00,'Finalizado',8,8,4,'Vistoria'),
+('2023-08-31','2023-09-01',500.00,'Finalizado',4,4,4,'Vistoria'),
+('2023-06-10','2023-06-11',500.00,'Finalizado',5,5,4,'Vistoria'),
+('2023-09-15','2023-09-16',500.00,'Finalizado',6,6,4,'Vistoria'),
+('2023-09-15',null,999.00,default,7,7,1,'Troca de Chassi'),
+('2023-09-16',null,999.00,default,8,8,1,'Troca de Cabeçote'),
+('2023-09-17',null,999.00,default,9,9,3,'Troca de Motor'),
+('2023-09-18',null,999.00,default,10,10,3,'Troca de bancos');
+
+insert into invoice (IValue,IData,IDescription,IClient_id,IService_id)
+values (999,'2023-09-10','Motor',1,1),
+(999,'2023-09-10','Vistoria',1,4),
+(500,'2023-09-10','Vistoria',2,4),
+(600,'2023-08-01','Limpeza de Estofado',3,2),
+(500,'2023-09-05','Vistoria',8,4),
+(500,'2023-09-01','Vistoria',4,4),
+(500,'2023-09-01','Vistoria',5,4),
+(500,'2023-06-11','Vistoria',5,4),
+(500,'2023-09-16','Vistoria',6,4);
+
+select * from clients;
+select * from Order_of_Service;
+select * from vehicle;
+select * from invoice;
+select * from service;
