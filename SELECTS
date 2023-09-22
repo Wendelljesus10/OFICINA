@@ -1,0 +1,34 @@
+-- CLIENTES E QUAIS VALORES DE CADA SERVIÇO SOLICITADO // USANDO WHERE
+select c.Fname as Nome,OrderStatus as Status,v.Nameveh as Veículo, Odescription as Descrição_serviço, Ordervalue as Valor_Pago
+from Clients c
+inner join Order_of_Service o on c.Client_id = o.OClient_id
+inner join vehicle v on c.Client_id = v.VClient_id
+Where OClient_id ;
+
+-- CLIENTES E QUAIS VALORES DE CADA SERVIÇO SOLICITADO / ORDENANDO POR NOME E MAIOR QUE 500 // ORDER BY
+select c.Fname as Nome,OrderStatus as Status,v.Nameveh as Veículo, Odescription as Descrição_serviço, Ordervalue as Valor_Pago
+from Clients c
+inner join Order_of_Service o on c.Client_id = o.OClient_id
+inner join vehicle v on c.Client_id = v.VClient_id
+Where Ordervalue > 500
+Order by Ordervalue DESC ;
+
+-- CLIENTES E QUANTOS SERVIÇOS SOLICITADOS // GROUP BY
+select Fname , count(OrderService_id) as Serviços_Solicitados
+from Order_of_Service O
+inner join Clients C on C.Client_id = O.OClient_id
+Group by OClient_id;
+
+-- CLIENTES E QUANTOS SERVIÇOS SOLICITADOS ORDENADOS POR NOME DESC
+select Fname as NOME, count(OrderService_id) as Serviços_Solicitados
+from Order_of_Service O
+inner join Clients C on C.Client_id = O.OClient_id
+Group by OClient_id
+Order by Fname;
+
+-- CLIENTES E QUANTOS SERVIÇOS SOLICITADOS ONDE SERVIÇOS FORAM SOLICITADOS IGUAL OU MAIOR QUE 2 // HAVING
+select Fname as NOME , count(OrderService_id) as Serviços_Solicitados
+from Order_of_Service O
+inner join Clients C on C.Client_id = O.OClient_id
+Group by OClient_id
+Having count(OrderService_id) >= 2;
